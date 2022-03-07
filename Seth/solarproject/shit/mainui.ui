@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1060</width>
+    <height>766</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #1f1b24;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>441</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+background-color: #121212;
+border-radius:30px;
+border : 0px;
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>19</x>
+       <y>19</y>
+       <width>401</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout"/>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>460</y>
+      <width>441</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox{
+background-color: #121212;
+border-radius:30px;
+border : 0px;
+
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background-color: #1f1b24;
+border-radius:15px;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+
+}
+QPushButton:hover{
+color:black;
+background-color: #915bde;
+}
+QPushButton:disabled {
+background-color: #121212;
+border-radius:15px;
+border-style: outset;
+border-width:1px;
+border-color:#1f1b24;
+color: white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Automatic</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>130</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background-color: #1f1b24;
+border-radius:15px;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+
+}
+QPushButton:hover{
+color:black;
+background-color: #915bde;
+}
+QPushButton:disabled {
+background-color: #121212;
+border-radius:15px;
+border-style: outset;
+border-width:1px;
+border-color:#1f1b24;
+color: white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Manual</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>90</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+}
+QToolButton:Hover{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:white;
+color: white;
+}
+QToolButton:disabled {
+background-color: #121212;
+border-width:1px;
+border-color:#1f1b24;
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>right arrow.png</normaloff>
+       <disabledoff>disabled arrow right.png</disabledoff>right arrow.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>90</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+}
+QToolButton:Hover{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:white;
+color: white;
+}
+QToolButton:disabled {
+background-color: #121212;
+border-width:1px;
+border-color:#1f1b24;
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>left arrow.png</normaloff>
+       <disabledoff>disabled arrow left.png</disabledoff>left arrow.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>30</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+}
+QToolButton:Hover{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:white;
+color: white;
+}
+QToolButton:disabled {
+background-color: #121212;
+border-width:1px;
+border-color:#1f1b24;
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>top arrow.png</normaloff>
+       <disabledoff>disabled arrow top.png</disabledoff>top arrow.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>150</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:#915bde;
+color: white;
+}
+QToolButton:Hover{
+background-color: #1f1b24;
+border-style: outset;
+border-width:1px;
+border-color:white;
+color: white;
+}
+QToolButton:disabled {
+background-color: #121212;
+border-width:1px;
+border-color:#1f1b24;
+}</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>bottom arrow.png</normaloff>
+       <disabledoff>disabled arrow bottom.png</disabledoff>bottom arrow.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>40</y>
+      <width>491</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+background-color: #121212;
+border-radius:30px;
+border : 0px;
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>29</x>
+       <y>19</y>
+       <width>441</width>
+       <height>601</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1060</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;
+background-color: #121212;
+</string>
+   </property>
+   <widget class="QMenu" name="menuCharts">
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="title">
+     <string>Charts</string>
+    </property>
+    <addaction name="actionPower_Plot"/>
+    <addaction name="actionCurrent_Plot"/>
+    <addaction name="actionVoltage_Plot"/>
+   </widget>
+   <addaction name="menuCharts"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionrightarrow">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../Downloads/Arrow.png</normaloff>../../../../Downloads/Arrow.png</iconset>
+   </property>
+   <property name="text">
+    <string>rightarrow</string>
+   </property>
+  </action>
+  <action name="actiontop_arrow">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../Pictures/top arrow.png</normaloff>../../../Pictures/top arrow.png</iconset>
+   </property>
+   <property name="text">
+    <string>top arrow</string>
+   </property>
+  </action>
+  <action name="actionPower_Plot">
+   <property name="text">
+    <string>Power Plot</string>
+   </property>
+  </action>
+  <action name="actionCurrent_Plot">
+   <property name="text">
+    <string>Current Plot</string>
+   </property>
+  </action>
+  <action name="actionVoltage_Plot">
+   <property name="text">
+    <string>Voltage Plot</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
