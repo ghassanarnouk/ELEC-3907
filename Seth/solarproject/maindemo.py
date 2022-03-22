@@ -30,7 +30,6 @@ from matplotlib.figure import Figure
 
 import random
 from PyQt5.QtGui import QIcon
-import pandas as pd
 from loginscreen import Ui_LoginWindow
 import webbrowser
 
@@ -60,7 +59,7 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet("background-color: #1f1b24;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.setWindowIcon(QIcon('Logo.png'))
+        
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(50, 40, 441, 311))
         self.groupBox.setStyleSheet("\n"
