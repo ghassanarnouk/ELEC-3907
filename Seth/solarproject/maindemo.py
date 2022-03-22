@@ -18,6 +18,9 @@ from PyQt5.QtWidgets import QApplication, qApp
 
 from qroundprogressbar import QRoundProgressBar
 from threading import Timer
+import threading
+import time
+import datetime
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from random import random
@@ -34,6 +37,7 @@ from loginscreen import Ui_LoginWindow
 import webbrowser
 
 
+stop_threads = True
 class MplCanvas(FigureCanvasQTAgg):
 
     def __init__(self, parent=None, width=5, height=4, dpi=100):
@@ -52,6 +56,11 @@ class MplCanvas(FigureCanvasQTAgg):
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        # declare thread
+        global stop_threads
+        self.t1 = threading.Thread(target = run, args =(lambda : stop_threads, ))
+        self.t1.daemon = True
+        self.t1.start()
         #main frame
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
@@ -86,10 +95,10 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle("")
         self.groupBox_3.setObjectName("groupBox_3")
 
-        #automatic button creation
+        #maual button creation
         self.pushButton = QtWidgets.QPushButton(self.groupBox_3)
         self.pushButton.clicked.connect(self.automaticButton)
-        self.pushButton.setEnabled(False)
+        self.pushButton.setEnabled(True)
         self.pushButton.setGeometry(QtCore.QRect(30, 60, 131, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -111,10 +120,10 @@ class Ui_MainWindow(object):
         
         self.pushButton.setObjectName("pushButton")
 
-        #manual button creation
+        #automatic button creation
         self.pushButton_2 = QtWidgets.QPushButton(self.groupBox_3)
         self.pushButton_2.clicked.connect(self.manualButton)
-        self.pushButton_2.setEnabled(True)
+        self.pushButton_2.setEnabled(False)
         self.pushButton_2.setGeometry(QtCore.QRect(30, 130, 131, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -138,7 +147,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.toolButton = QtWidgets.QToolButton(self.groupBox_3)
         self.toolButton.clicked.connect(self.rightArrow)
-        self.toolButton.setEnabled(False)
+        self.toolButton.setEnabled(True)
         self.toolButton.setGeometry(QtCore.QRect(360, 90, 41, 41))
         self.toolButton.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
@@ -166,7 +175,7 @@ class Ui_MainWindow(object):
         self.toolButton.setIconSize(QtCore.QSize(64, 64))
         self.toolButton.setObjectName("toolButton")
         self.toolButton_2 = QtWidgets.QToolButton(self.groupBox_3)
-        self.toolButton_2.setEnabled(False)
+        self.toolButton_2.setEnabled(True)
         self.toolButton_2.setGeometry(QtCore.QRect(260, 90, 41, 41))
         self.toolButton_2.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
@@ -195,7 +204,7 @@ class Ui_MainWindow(object):
         self.toolButton_2.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_2.setObjectName("toolButton_2")
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_3)
-        self.toolButton_3.setEnabled(False)
+        self.toolButton_3.setEnabled(True)
         self.toolButton_3.setGeometry(QtCore.QRect(310, 30, 41, 41))
         self.toolButton_3.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
@@ -224,7 +233,7 @@ class Ui_MainWindow(object):
         self.toolButton_3.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_3.setObjectName("toolButton_3")
         self.toolButton_4 = QtWidgets.QToolButton(self.groupBox_3)
-        self.toolButton_4.setEnabled(False)
+        self.toolButton_4.setEnabled(True)
         self.toolButton_4.setGeometry(QtCore.QRect(310, 150, 41, 41))
         self.toolButton_4.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
@@ -540,6 +549,10 @@ class Ui_MainWindow(object):
         self.toolButton_2.setEnabled(False)
         self.toolButton_3.setEnabled(False)
         self.toolButton_4.setEnabled(False)
+        global stop_threads
+        stop_threads=False
+        
+        
 
     def manualButton(self):
         self.pushButton.setEnabled(True)
@@ -548,6 +561,8 @@ class Ui_MainWindow(object):
         self.toolButton_2.setEnabled(True)
         self.toolButton_3.setEnabled(True)
         self.toolButton_4.setEnabled(True)
+        global stop_threads 
+        stop_threads=True
     def topArrow(self):
         print("tilt up")
 
@@ -567,9 +582,26 @@ class Ui_MainWindow(object):
     def weather(self):
         print("weather")
         webbrowser.open('https://www.theweathernetwork.com/ca/weather/ontario/ottawa')
+
+# multi threading
+
+def run(self):
+        while True:
+                
+
+                while (stop_threads):
+                        time.sleep(1)
+                time.sleep(1)
+                print("["+str(datetime.datetime.now())+"]"+ "thread running")
+                
+
+
+                
+
 if __name__ == "__main__":
     
     import sys
+    
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
