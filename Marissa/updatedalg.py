@@ -141,10 +141,10 @@ while True:
         # Adjust North South Servo   
            
         if ((LDR_North - LDR_South) > LDR_Diff):
-            servo_NS.value = 0.9
+            servo_NS.value = -0.9
            
         elif ((LDR_North - LDR_South) < (-1 * LDR_Diff)):
-            servo_NS.value = -0.9
+            servo_NS.value = 0.9
        
         else:
             servo_NS.value = None
@@ -152,10 +152,10 @@ while True:
         #Adjust East West Servo   
            
         if ((LDR_East - LDR_West) > LDR_Diff):
-            servo_EW.value = 0.9
+            servo_EW.value = -0.9
            
         elif ((LDR_East - LDR_West) < (-1 * LDR_Diff)):
-            servo_EW.value = -0.9
+            servo_EW.value = 0.9
        
         else:
             servo_EW.value = None
