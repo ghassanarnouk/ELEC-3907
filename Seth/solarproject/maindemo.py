@@ -45,10 +45,9 @@ class MplCanvas(FigureCanvasQTAgg):
         fig.set_facecolor('#121212')
         self.axes = fig.add_subplot(111)
         self.axes.set_facecolor('#121212')
-        self.axes.tick_params(color='white', labelcolor='white')
+        self.axes.tick_params(colors='white')
         for spine in self.axes.spines.values():
             spine.set_edgecolor('white')
-
         super(MplCanvas, self).__init__(fig)
 
     def clear(self):
@@ -423,6 +422,7 @@ class Ui_MainWindow(object):
 
         #Plots
         self.canvas = MplCanvas(self, width=5, height=4, dpi=100)
+        #self.canvas.setTitle("Chart 1")
         self.n_data = 0
         self.xdata = list(range(self.n_data))
         self.ydata = [random.randint(8, 12) for i in range(self.n_data)]
@@ -436,9 +436,11 @@ class Ui_MainWindow(object):
         self.update_plot()
 
         self.canvas2 = MplCanvas(self, width=5, height=4, dpi=100)
+        #self.canvas2.setTitle("Chart 1")
         self.update_plot2()
 
         self.canvas3 = MplCanvas(self, width=5, height=4, dpi=100)
+       # self.canvas3.setTitle("Chart 1")
         self.update_plot3()
         
         self.verticalLayout.addWidget(self.canvas)
@@ -517,6 +519,9 @@ class Ui_MainWindow(object):
                 self.ydata = self.ydata[1:] + [random.randint(8, 12)]
         self.canvas.axes.cla()  # Clear the canvas.
         self.canvas.axes.plot(self.xdata, self.ydata, '#d4f542')
+        self.canvas.axes.set_title("Power Plot")
+        self.canvas.axes.title.set_color('white')
+        
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
     
@@ -528,6 +533,8 @@ class Ui_MainWindow(object):
                 self.ydata = self.ydata[1:] + [random.randint(8, 12)]
         self.canvas2.axes.cla()  # Clear the canvas.
         self.canvas2.axes.plot(self.xdata, self.ydata, '#42f5e3')
+        self.canvas2.axes.set_title("Current Plot")
+        self.canvas2.axes.title.set_color('white')
         # Trigger the canvas to update and redraw.
         self.canvas2.draw()
     
@@ -539,6 +546,8 @@ class Ui_MainWindow(object):
                 self.ydata = self.ydata[1:] + [random.randint(8, 12)]
         self.canvas3.axes.cla()  # Clear the canvas.
         self.canvas3.axes.plot(self.xdata, self.ydata, '#7e42f5')
+        self.canvas3.axes.set_title("Voltage Plot")
+        self.canvas3.axes.title.set_color('white')
         # Trigger the canvas to update and redraw.
         self.canvas3.draw()
 
@@ -564,23 +573,23 @@ class Ui_MainWindow(object):
         global stop_threads 
         stop_threads=True
     def topArrow(self):
-        print("tilt up")
+        print("["+str(datetime.datetime.now())+"] "+ "tilt up")  
 
     def downArrow(self):
-        print("tilt down")
+        print("["+str(datetime.datetime.now())+"] "+ "tilt down")
 
     def rightArrow(self):
-        print("rotate ccw")
+        print("["+str(datetime.datetime.now())+"] "+ "rotate ccw")
     
     def leftArrow(self):
-        print("rotate cw")
+        print("["+str(datetime.datetime.now())+"] "+ "rotate cw")
     def openLogin(self):
         self.window =QtWidgets.QMainWindow()
         self.ui = Ui_LoginWindow()
         self.ui.setupUi(self.window,MainWindow)
         self.window.show()
     def weather(self):
-        print("weather")
+        print("["+str(datetime.datetime.now())+"] "+ "weather")
         webbrowser.open('https://www.theweathernetwork.com/ca/weather/ontario/ottawa')
 
 # multi threading
@@ -592,7 +601,7 @@ def run(self):
                 while (stop_threads):
                         time.sleep(1)
                 time.sleep(1)
-                print("["+str(datetime.datetime.now())+"]"+ "thread running")
+                print("["+str(datetime.datetime.now())+"] "+ "thread running")
                 
 
 

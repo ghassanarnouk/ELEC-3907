@@ -67,9 +67,9 @@ border-bottom-right-radius:50px</string>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>80</y>
-       <width>100</width>
+       <x>380</x>
+       <y>170</y>
+       <width>181</width>
        <height>40</height>
       </rect>
      </property>
@@ -84,68 +84,15 @@ border-bottom-right-radius:50px</string>
       <string notr="true">color:rgba(0,0,0,200);</string>
      </property>
      <property name="text">
-      <string>Log In</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="username_text">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>140</y>
-       <width>261</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color:rhba(0,0,0,0);
-border:none;
-border-bottom: 2px solid rgba(46,82,101,200);
-color:rgba(0,0,0,240);
-padding-bottom:7px;</string>
-     </property>
-     <property name="placeholderText">
-      <string>Username</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="password_text">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>200</y>
-       <width>261</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color:rhba(0,0,0,0);
-border:none;
-border-bottom: 2px solid rgba(46,82,101,200);
-color:rgba(0,0,0,240);
-padding-bottom:7px;</string>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-     <property name="placeholderText">
-      <string>Password</string>
+      <string>Solar Tracker</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>300</y>
-       <width>251</width>
+       <y>230</y>
+       <width>261</width>
        <height>51</height>
       </rect>
      </property>
@@ -173,7 +120,7 @@ background-color:rgba(150,123,111,255);
 }</string>
      </property>
      <property name="text">
-      <string>Log In</string>
+      <string>LAUNCH</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -194,30 +141,6 @@ border-top-left-radius:50px;
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>360</y>
-       <width>251</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color:rgba(0,0,0,210);
-border:none;</string>
-     </property>
-     <property name="text">
-      <string>Forgot Username or Password?</string>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -233,7 +156,7 @@ border:none;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

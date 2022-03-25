@@ -1,5 +1,6 @@
 install using following commands:
 
+sudo apt install python3-pip	
 pip install PyQt5
 sudo apt-get install qtcreator pyqt5-dev-tools
 sudo pip install qroundprogressbar
