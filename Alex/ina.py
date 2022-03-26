@@ -25,6 +25,8 @@ try:
         dict['Voltage'].append(v)
         dict['Current'].append(i)
         dict['Power'].append(p)
+        df = pd.DataFrame(data = dict)
+        df.to_csv('solar.csv', index = False)
         sleep(30)
 
 except KeyboardInterrupt:
