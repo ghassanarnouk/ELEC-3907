@@ -69,22 +69,22 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(50, 40, 441, 311))
+        self.groupBox.setGeometry(QtCore.QRect(50, 40, 500, 390))
         self.groupBox.setStyleSheet("\n"
 "background-color: #121212;\n"
-"border-radius:30px;\n"
+"border-radius:12px;\n"
 "border : 0px;\n"
 "")
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
         self.gridLayoutWidget = QtWidgets.QWidget(self.groupBox)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(19, 19, 401, 271))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(19, 5, 550, 350))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_3.setGeometry(QtCore.QRect(50, 460, 441, 221))
+        self.groupBox_3.setGeometry(QtCore.QRect(50, 460, 495, 221))
         self.groupBox_3.setStyleSheet("QGroupBox{\n"
 "background-color: #121212;\n"
 "border-radius:30px;\n"
@@ -147,7 +147,7 @@ class Ui_MainWindow(object):
         self.toolButton = QtWidgets.QToolButton(self.groupBox_3)
         self.toolButton.clicked.connect(self.rightArrow)
         self.toolButton.setEnabled(True)
-        self.toolButton.setGeometry(QtCore.QRect(360, 90, 41, 41))
+        self.toolButton.setGeometry(QtCore.QRect(390, 90, 41, 41))
         self.toolButton.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
 "border-style: outset;\n"
@@ -175,7 +175,7 @@ class Ui_MainWindow(object):
         self.toolButton.setObjectName("toolButton")
         self.toolButton_2 = QtWidgets.QToolButton(self.groupBox_3)
         self.toolButton_2.setEnabled(True)
-        self.toolButton_2.setGeometry(QtCore.QRect(260, 90, 41, 41))
+        self.toolButton_2.setGeometry(QtCore.QRect(290, 90, 41, 41))
         self.toolButton_2.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
 "border-style: outset;\n"
@@ -204,7 +204,7 @@ class Ui_MainWindow(object):
         self.toolButton_2.setObjectName("toolButton_2")
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_3)
         self.toolButton_3.setEnabled(True)
-        self.toolButton_3.setGeometry(QtCore.QRect(310, 30, 41, 41))
+        self.toolButton_3.setGeometry(QtCore.QRect(340, 30, 41, 41))
         self.toolButton_3.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
 "border-style: outset;\n"
@@ -233,7 +233,7 @@ class Ui_MainWindow(object):
         self.toolButton_3.setObjectName("toolButton_3")
         self.toolButton_4 = QtWidgets.QToolButton(self.groupBox_3)
         self.toolButton_4.setEnabled(True)
-        self.toolButton_4.setGeometry(QtCore.QRect(310, 150, 41, 41))
+        self.toolButton_4.setGeometry(QtCore.QRect(340, 150, 41, 41))
         self.toolButton_4.setStyleSheet("QToolButton{\n"
 "background-color: #1f1b24;\n"
 "border-style: outset;\n"
@@ -261,7 +261,7 @@ class Ui_MainWindow(object):
         self.toolButton_4.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_4.setObjectName("toolButton_4")
         self.groupBox_4 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_4.setGeometry(QtCore.QRect(540, 40, 491, 641))
+        self.groupBox_4.setGeometry(QtCore.QRect(580, 40, 450, 641))
         self.groupBox_4.setStyleSheet("\n"
 "background-color: #121212;\n"
 "border-radius:30px;\n"
@@ -270,7 +270,7 @@ class Ui_MainWindow(object):
         self.groupBox_4.setTitle("")
         self.groupBox_4.setObjectName("groupBox_4")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.groupBox_4)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(29, 19, 441, 601))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(29, 19, 400, 601))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -321,6 +321,34 @@ class Ui_MainWindow(object):
 
 
         #round progress bars
+        self.label_2 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_2.setObjectName("label_2")
+        self.label_2.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
+        self.label_1 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_1.setObjectName("label_1")
+        self.label_1.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_1, 0, 0, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_3.setObjectName("label_3")
+        self.label_3.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_3, 0, 2, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_4.setObjectName("label_4")
+        self.label_4.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_4, 2, 0, 1, 1)
+        self.label_5 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_5.setObjectName("label_5")
+        self.label_5.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_5, 2, 1, 1, 1)
+        self.label_6 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_6.setObjectName("label_6")
+        self.label_6.setStyleSheet("color: white")
+        self.gridLayout.addWidget(self.label_6, 2, 2, 1, 1)
+
+
+
+
         self.progress = QRoundProgressBar()
         self.progress.setBarStyle(QRoundProgressBar.BarStyle.LINE)
         self.progress.setDecimals(1)
@@ -330,12 +358,13 @@ class Ui_MainWindow(object):
         self.progress.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress.setRange(-40,40)
         self.progress.setValue(23)
+         # style accordingly via palette
         palette = QPalette()
         palette.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette.setBrush(QPalette.Highlight, QColor('#d4f542'))
         palette.setColor(QPalette.Text, Qt.white)
         self.progress.setPalette(palette)
-        self.gridLayout.addWidget(self.progress,0,1)
+        self.gridLayout.addWidget(self.progress, 1, 0, 1, 1)
 
         self.progress2 = QRoundProgressBar()
         self.progress2.setBarStyle(QRoundProgressBar.BarStyle.LINE)
@@ -344,14 +373,17 @@ class Ui_MainWindow(object):
         self.progress2.setOutlinePenWidth(3)
         self.progress2.setDataPenWidth(3)
         self.progress2.setNullPosition(QRoundProgressBar.PositionBottom)
+        gradientPoints2 = [(0, QColor('#42f554'))]
+        self.progress2.setDataColors(gradientPoints2)
         self.progress2.setRange(-40,40)
         self.progress2.setValue(21)
+         # style accordingly via palette
         palette2 = QPalette()
         palette2.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette2.setBrush(QPalette.Highlight, QColor('#42f5e3'))
         palette2.setColor(QPalette.Text, Qt.white)
         self.progress2.setPalette(palette2)
-        self.gridLayout.addWidget(self.progress2,0,2)
+        self.gridLayout.addWidget(self.progress2,1, 1, 1, 1)
 
         self.progress3 = QRoundProgressBar()
         self.progress3.setBarStyle(QRoundProgressBar.BarStyle.LINE)
@@ -360,14 +392,17 @@ class Ui_MainWindow(object):
         self.progress2.setOutlinePenWidth(3)
         self.progress3.setDataPenWidth(3)
         self.progress3.setNullPosition(QRoundProgressBar.PositionBottom)
+        gradientPoints3 = [(0, QColor('#426ff5'))]
+        self.progress3.setDataColors(gradientPoints3)
         self.progress3.setRange(-40,40)
         self.progress3.setValue(15)
+         # style accordingly via palette
         palette3 = QPalette()
         palette3.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette3.setBrush(QPalette.Highlight, QColor('#7e42f5'))
         palette3.setColor(QPalette.Text, Qt.white)
         self.progress3.setPalette(palette3)
-        self.gridLayout.addWidget(self.progress3,0,3)
+        self.gridLayout.addWidget(self.progress3,1, 2, 1, 1)
 
         self.progress4 = QRoundProgressBar()
         self.progress4.setBarStyle(QRoundProgressBar.BarStyle.LINE)
@@ -378,12 +413,13 @@ class Ui_MainWindow(object):
         self.progress4.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress4.setRange(-40,40)
         self.progress4.setValue(-4)
+         # style accordingly via palette
         palette4 = QPalette()
         palette4.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette4.setBrush(QPalette.Highlight, QColor('#f542f2'))
         palette4.setColor(QPalette.Text, Qt.white)
         self.progress4.setPalette(palette4)
-        self.gridLayout.addWidget(self.progress4,1,1)
+        self.gridLayout.addWidget(self.progress4,3, 0, 1, 1)
 
         self.progress5 = QRoundProgressBar()
         self.progress5.setBarStyle(QRoundProgressBar.BarStyle.LINE)
@@ -393,13 +429,13 @@ class Ui_MainWindow(object):
         self.progress5.setDataPenWidth(3)
         self.progress5.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress5.setRange(-40,40)
-        self.progress5.setValue(-30)
+         # style accordingly via palette
         palette5 = QPalette()
         palette5.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette5.setBrush(QPalette.Highlight, QColor('#f5427e'))
         palette5.setColor(QPalette.Text, Qt.white)
         self.progress5.setPalette(palette5)
-        self.gridLayout.addWidget(self.progress5,1,2)
+        self.gridLayout.addWidget(self.progress5,3, 1, 1, 1)
 
         self.progress6 = QRoundProgressBar()
         self.progress6.setBarStyle(QRoundProgressBar.BarStyle.LINE)
@@ -410,12 +446,13 @@ class Ui_MainWindow(object):
         self.progress6.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress6.setRange(-40,40)
         self.progress6.setValue(35)
+         # style accordingly via palette
         palette6 = QPalette()
         palette6.setBrush(QPalette.AlternateBase, QColor('#121212'))
         palette6.setBrush(QPalette.Highlight, QColor('#f57e42'))
         palette6.setColor(QPalette.Text, Qt.white)
         self.progress6.setPalette(palette6)
-        self.gridLayout.addWidget(self.progress6,1,3)
+        self.gridLayout.addWidget(self.progress6,3, 2, 1, 1)
 
 
 
@@ -487,6 +524,12 @@ class Ui_MainWindow(object):
         self.actionPower_Plot.setText(_translate("MainWindow", "Power Plot"))
         self.actionCurrent_Plot.setText(_translate("MainWindow", "Current Plot"))
         self.actionVoltage_Plot.setText(_translate("MainWindow", "Voltage Plot"))
+        self.label_1.setText(_translate("MainWindow", "Current (mA)"))
+        self.label_3.setText(_translate("MainWindow", "Power (mW)"))
+        self.label_2.setText(_translate("MainWindow", "Voltage (V)"))
+        self.label_4.setText(_translate("MainWindow", "Temperature ("+u"\u00b0"+"C)"))
+        self.label_5.setText(_translate("MainWindow", "Light Intensity"))
+        self.label_6.setText(_translate("MainWindow", "Humidity (%)"))
 
     def update_plots(self):
         self.update_plot()
