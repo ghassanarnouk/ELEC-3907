@@ -2,6 +2,7 @@ from time import sleep
 from datetime import datetime
 from ina219 import INA219
 import pandas as pd
+from pathlib import Path
 
 ina = INA219(shunt_ohms = 0.1, max_expected_amps = 0.6, address = 0x40, busnum = 1)
 
@@ -12,6 +13,8 @@ dict = {'Time': [],
         'Current':[],
         'Power':[],
         }
+
+
 
 try:
     while 1:
@@ -27,12 +30,19 @@ try:
         dict['Voltage'].append(v)
         dict['Current'].append(i)
         dict['Power'].append(p)
-        current_date = now.strftime("%Y:%M:%S")
+        current_date = now.strftime("%Y:%m:%d")
         current_date = current_date.replace(':', '')
         title = 'solar' + current_date + '.csv'
         df = pd.DataFrame(data = dict)
-        df.to_csv(title, index = False)
+        print(title)
+        if (current_time == '2359'):
+            Path('/home/pi/Documents/ELEC-3907/Alex/' + title).rename('/home/pi/Documents/ELEC-3907/Alex/Database/' + title)
+            print('FILE MOVED')
+        df.to_csv(title, index = False) 
         sleep(60)
+        
+           
+
 
 except KeyboardInterrupt:
     print("\n exiting")
