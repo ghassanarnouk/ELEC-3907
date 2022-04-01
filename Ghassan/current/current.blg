@@ -1,0 +1,9 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'current.blg'
+[53] biber:340> INFO - === Fri Apr  1, 2022, 18:20:01
+[72] Biber.pm:415> INFO - Reading 'current.bcf'
+[128] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[133] Utils.pm:395> WARN - The file 'current.bcf' does not contain any citations!
+[142] bbl.pm:654> INFO - Writing 'current.bbl' with encoding 'UTF-8'
+[143] bbl.pm:757> INFO - Output to current.bbl
+[144] Biber.pm:128> INFO - WARNINGS: 1

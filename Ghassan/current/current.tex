@@ -1,0 +1,265 @@
+% Run: arara -l *.tex to generate a log file (arara.log) of the compilation for traceability and debugging.
+% Running -l instead of -v is also quicker to run.
+
+% synctex: on - an input and output synchronization feature that allows navigation from source to typeset material and vice versa.
+% interaction: nonstopmode - Tex does not request input after serious errors but stops altogether.
+% shell: yes - shell escape to add compilation parameters.
+
+% arara: pdflatex: { synctex: on, interaction: nonstopmode, shell: yes }
+% arara: pdflatex: { synctex: on, interaction: nonstopmode, shell: yes }
+
+
+% article - the document class.
+% hidelinks - removes the borders around clickable cross-references and hyperlinks
+% 12pt - font size of the document.
+% a4paper - paper size and format.
+
+% draft - speeds up typesetting, because figures are not loaded, just indicated by a frame.
+% Hyperref items will only be displayed without the functionality.
+% The complication process using the "draft" option is quicker to run.
+% Delete the "draft" option or replace it with "final" in the final document version.
+
+% Other optinos include: twocolumn, landscape, titlepage, openright, and openany.
+\documentclass[final, hidelinks, 12pt, a4paper]{article}
+
+% Solves the error which occurs when user's packages have allocated too many streams - Tex fixed limit is 16
+\usepackage{morewrites}
+
+% Provides a wider range of input encodings using standard mappings
+\usepackage[utf8]{inputenc}
+
+% Constructs headers and footers
+\usepackage{fancyhdr}
+
+% Provides a key-value interface for optional arguments to the \includegraphics command
+\usepackage{graphicx}
+
+% Provides various features to facilitate writing math formulas and to improve the typographical quality of their output
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Provides many ways to customize the captions in floating environments like figure and table, and cooperates with many other packages
+\usepackage{caption}
+
+% Allows the use of sub-caption
+\usepackage{subcaption}
+
+% Draws diagonal lines and arrows with limits through parts of maths formulas
+% thickline - provides heavier lines and arrows
+% makeroom - increases the horizontal spacing to make room for the cancellation value
+\usepackage[thicklines, makeroom]{cancel}
+
+% Provides both foreground and background color management. Also, provides easy driver-independent access to several kinds of color tints, shades, tones, and mixes of arbitrary colors
+% dvipsnames - makes the color names for the driver dvips available.
+\usepackage[dvipsnames]{xcolor}
+
+% Supports common layouts for tabular column heads in whole documents, based on one-column tabular environment
+\usepackage{makecell}
+
+% Provides a simple LaTeX interface for the processing of files with comma separated values (CSV)
+\usepackage{csvsimple}
+
+% Defines a multicols environment which typesets text in multiple columns (up to a max. of 10), and (by default) balances the end of each column at the end of the environment
+\usepackage{multicol}
+
+% Provides additional features to existing packages and a consistent interface
+\usepackage{siunitx}
+
+% Produces hypertext links
+% pdftex - tex variant that writes PDF directly
+% breaklinks - allow links to break over lines by making links over multiple lines into PDF links to the same to the same target
+% bookmarks - A set of Acrobat bookmarks are written, in a manner similar to the table of contents, requiring two passes of LATEX. 
+% Some postprocessing of the bookmark file (file extension .out) may be needed to translate LATEX codes, since bookmarks must be written in PDFEncoding.
+% To aid this process, the .out file is not rewritten by LATEX if it is edited to contain a line \let\WriteBookmarks\relax
+% bookmarksopen - If Acrobat bookmarks are requested, show them with all the subtrees expanded.
+% bookmarksnumbered - If Acrobat bookmarks are requested, include section numbers.
+% pdfmenubar - make PDF viewer's menu bar visible.
+\usepackage[bookmarks, bookmarksnumbered, bookmarksopen, breaklinks, pdftex, linktoc=all, pdfmenubar]{hyperref}
+%\let\WriteBookmarks\relax
+% Setting the title, author, and creator of the PDF
+\hypersetup{pdftitle={Smart Solar Panel System Current},
+            pdfauthor={Ghassan Arnouk},
+            pdfcreator={Ghassan Arnouk}}
+
+% Enables the user to typeset programs (programming code) within Latex. The source code is read directly and not processed 
+\usepackage{listings}
+
+% References the number of pages in your Latex document through the introduction of a new label which can be referenced to give a reference to the last page of a document
+\usepackage{lastpage}
+
+
+
+% Selectively include/exclude pieces of text, allowing the user to define new, separately controlled, comment version
+\usepackage{comment}
+
+% [In Progress]
+% Must be inserted after the biblatex package to overwrite biblatex url handling - for consistency
+\usepackage{xurl}
+
+% Moves the typesetting position from the left margin of the paragraph
+\usepackage{tabto}
+
+% Provides user control over the layout of the three basic list environments: enumerate, itemize, and description
+\usepackage{enumitem}
+
+% Manages culturally-determined typographical (and other) rules for a wide range of languages.
+% Language specified is English 
+\usepackage[english]{babel}
+
+% Provides advanced facilities for inline and display quotations
+\usepackage{csquotes}
+
+% Provides various ways of formatting the titles of appendices. Also (sub)appendices environments are provided.
+% titletoc - adds a name (e.g. Appendix) before each appendix listed in the ToC.
+% page - puts a title (e.g. Appendices) into the document at the point where the appendices environment is begun.
+\usepackage[page]{appendix}
+
+% Provides tools to generate plots and labeled axes easily
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+
+% Provides an easy and flexible user interface to customize page layout, implementing auto-centering and auto-balancing mechanisms so that the users have only to give the least description for the page layout.
+% includeheadfoot - sets both includehead and includefoot to true.
+% margin - sets the margins of the Latex document.
+% Other options:
+% twoside - switches on twoside mode with left and right margins swapped on verso pages.
+% asymmetric - implements a twosided layout in which margins are not swapped on alternate pages (by
+% setting \oddsidemargin to \evensidemargin + bindingoffset) and in which the
+% marginal notes stay always on the same side. 
+% This option can be used as an alternative to the twoside option.
+\usepackage[margin=1in, includeheadfoot]{geometry}
+
+% Formatting bibliography.
+% Bibliography style=ieee.
+% backend=biber - the backend of biblatex used to transfer data from source files to the Latex code.
+\usepackage[style=ieee, backend=biber]{biblatex}
+
+% Supports acronyms and multiple glossaries, and has provision for operation in several languages.
+\usepackage[debug, toc, section=section, acronym, symbols]{glossaries} 
+
+% Allows the use and import of markdown files.
+% codeSpans - Enable the code span syntax.
+% [In Progress]
+\usepackage[fencedCode, inlineFootnotes, citations, definitionLists, hashEnumerators, smartEllipses, hybrid, codeSpans]{markdown}
+
+
+% Fixes package fancyhdr Warning: \heatheight is too small (12.0pt)
+\setlength{\headheight}{14.49998pt}
+% Makes \topmargin smaller to compensate the change introduced in the previous line
+\addtolength{\topmargin}{-2.49998pt}
+
+
+% A path to the images directory to be imported in the tex document
+\graphicspath{{./Imports/Images/}}
+
+% A path to the bibliography directory to be imported in the tex document
+\addbibresource[location=local]{./Imports/Bibliography/accelerators.bib}
+
+% [In Progress]
+\newglossary[cgls]{constants}{cstog}{cstig}{Constants}
+\makeglossaries
+
+% Changes the page number of titlepage, toc, lot, lof, and lol to roman
+\pagenumbering{roman}
+
+
+% A new command for less cramped nested fractions
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% A new command for colored cancellation marks
+\renewcommand{\CancelColor}{\color{red}}
+
+% A special delimiter for bits of code that should be evaluated
+\lstset{escapeinside={<}{>}}
+
+% A customized counter to keep track of '<++>TEXT'
+%\newcounter{<++>VARIABLE}
+%\newcommand\<++>THENEWCOMMAND{\stepcounter{<++>VARIABLE}TEXT \the<++>VARIABLE}
+
+% Changes the heading of the list of listings from 'Listings' to anything the user desires
+%\renewcommand{\lstlistlistingname}{<name>}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%% Acronyms %%%%%%%%%%%%%%%%%%%%%
+% Acronyms go here
+
+
+% The document starts here!!
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+        	\vspace{1cm}
+            % Lab report title
+            {\LARGE{\bfseries Smart Solar Panel System}}\\
+
+            % Day of creation
+            \vspace{15cm}
+            {\bfseries Date of Creation:} \today\\
+    	\end{center}
+    \end{titlepage}
+
+    % Prints table of content, update and maintain it automatically
+    \tableofcontents
+    \clearpage
+
+    % Prints list of tables, update and maintain it automatically
+    \listoftables
+    \clearpage
+    
+    % Prints list of figures, update and maintain it automatically
+    \listoffigures
+    \clearpage
+
+    % Prints list of listings, update and maintain it automatically
+%    \lstlistoflistings
+%    \clearpage
+
+
+    % Defines page style, header, and footer
+    \pagestyle{fancy}
+    % Student name & student no.
+    \lhead{Smart Solar Panel System}
+    % Lab report title
+    \rhead{Current Plot \& Table}
+    \rfoot{Page \thepage\ of \pageref{LastPage}} 
+    % Hides page number in the middle of the footer
+    \cfoot{}
+
+    % Changes the page numbering of the document back to Arabic
+    \pagenumbering{arabic}
+
+
+    % First section goes here
+    \section{Current Plot}
+    \label{sct:cplot}
+    <++>
+    \clearpage
+    \section{Current Table}
+    \label{sct:ctable}
+    <++>
+    \clearpage
+
+    % Prints glossaries
+    \printglossaries
+    % Prints all (used and unused) glossaries 
+    \glsaddallunused
+    \clearpage
+   
+
+    % Prints bibliography
+    \printbibliography
+    \clearpage
+
+
+    % Prevents a page number in the toc next to Appendices 
+    \noappendicestocpagenum
+    % Inserts appendix heading into the toc
+    \addappheadtotoc
+
+    % Appendices go below here
+
+\end{document}

@@ -1,0 +1,9 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'power.blg'
+[53] biber:340> INFO - === Fri Apr  1, 2022, 18:22:11
+[69] Biber.pm:415> INFO - Reading 'power.bcf'
+[126] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[131] Utils.pm:395> WARN - The file 'power.bcf' does not contain any citations!
+[140] bbl.pm:654> INFO - Writing 'power.bbl' with encoding 'UTF-8'
+[140] bbl.pm:757> INFO - Output to power.bbl
+[141] Biber.pm:128> INFO - WARNINGS: 1
