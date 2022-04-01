@@ -365,7 +365,7 @@ class Ui_MainWindow(object):
         self.progress.setDataPenWidth(3)
         self.progress.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress.setRange(-40,40)
-        self.progress.setValue(23)
+        self.progress.setValue(0)
          # style accordingly via palette
         palette = QPalette()
         palette.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -384,7 +384,7 @@ class Ui_MainWindow(object):
         gradientPoints2 = [(0, QColor('#42f554'))]
         self.progress2.setDataColors(gradientPoints2)
         self.progress2.setRange(-40,40)
-        self.progress2.setValue(21)
+        self.progress2.setValue(0)
          # style accordingly via palette
         palette2 = QPalette()
         palette2.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -397,13 +397,13 @@ class Ui_MainWindow(object):
         self.progress3.setBarStyle(QRoundProgressBar.BarStyle.LINE)
         self.progress3.setDecimals(1)
         self.progress3.setFormat('%v')
-        self.progress2.setOutlinePenWidth(3)
+        self.progress3.setOutlinePenWidth(3)
         self.progress3.setDataPenWidth(3)
         self.progress3.setNullPosition(QRoundProgressBar.PositionBottom)
         gradientPoints3 = [(0, QColor('#426ff5'))]
         self.progress3.setDataColors(gradientPoints3)
         self.progress3.setRange(-40,40)
-        self.progress3.setValue(15)
+        self.progress3.setValue(0)
          # style accordingly via palette
         palette3 = QPalette()
         palette3.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -420,7 +420,7 @@ class Ui_MainWindow(object):
         self.progress4.setDataPenWidth(3)
         self.progress4.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress4.setRange(-40,40)
-        self.progress4.setValue(-4)
+        self.progress4.setValue(0)
          # style accordingly via palette
         palette4 = QPalette()
         palette4.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -437,6 +437,7 @@ class Ui_MainWindow(object):
         self.progress5.setDataPenWidth(3)
         self.progress5.setNullPosition(QRoundProgressBar.PositionBottom)
         self.progress5.setRange(-40,40)
+        self.progress5.setValue(0)
          # style accordingly via palette
         palette5 = QPalette()
         palette5.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -452,8 +453,8 @@ class Ui_MainWindow(object):
         self.progress6.setOutlinePenWidth(3)
         self.progress6.setDataPenWidth(3)
         self.progress6.setNullPosition(QRoundProgressBar.PositionBottom)
-        self.progress6.setRange(-40,40)
-        self.progress6.setValue(35)
+        self.progress6.setRange(0,100)
+        self.progress6.setValue(0)
          # style accordingly via palette
         palette6 = QPalette()
         palette6.setBrush(QPalette.AlternateBase, QColor('#121212'))
@@ -549,9 +550,9 @@ class Ui_MainWindow(object):
         self.progress.setValue((random.uniform(0,20)))
         self.progress2.setValue((random.uniform(0,20)))
         self.progress3.setValue((random.uniform(0,20)))
-        self.progress4.setValue((random.uniform(-20,20)))
+        self.progress4.setValue(24)
         self.progress5.setValue((random.uniform(-20,20)))
-        self.progress6.setValue((random.uniform(-20,20)))
+        self.progress6.setValue(43)
 
     
     def timers(self):
