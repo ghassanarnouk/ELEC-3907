@@ -38,6 +38,10 @@ import webbrowser
 
 
 stop_threads = True
+topArrowRotate = False
+downArrowRotate = False
+rightArrowRotate = False
+leftArrowRotate = False
 class MplCanvas(FigureCanvasQTAgg):
 
     def __init__(self, parent=None, width=5, height=4, dpi=100):
@@ -145,7 +149,8 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_2.setObjectName("pushButton_2")
         self.toolButton = QtWidgets.QToolButton(self.groupBox_3)
-        self.toolButton.clicked.connect(self.rightArrow)
+        self.toolButton.pressed.connect(self.rightArrowPressed)
+        self.toolButton.released.connect(self.rightArrowReleased)
         self.toolButton.setEnabled(True)
         self.toolButton.setGeometry(QtCore.QRect(390, 90, 41, 41))
         self.toolButton.setStyleSheet("QToolButton{\n"
@@ -199,7 +204,8 @@ class Ui_MainWindow(object):
         icon1.addPixmap(QtGui.QPixmap("left arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon1.addPixmap(QtGui.QPixmap("disabled arrow left.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.toolButton_2.setIcon(icon1)
-        self.toolButton_2.clicked.connect(self.leftArrow)
+        self.toolButton_2.pressed.connect(self.leftArrowPressed)
+        self.toolButton_2.released.connect(self.leftArrowReleased)
         self.toolButton_2.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_2.setObjectName("toolButton_2")
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_3)
@@ -228,7 +234,8 @@ class Ui_MainWindow(object):
         icon2.addPixmap(QtGui.QPixmap("top arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon2.addPixmap(QtGui.QPixmap("disabled arrow top.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.toolButton_3.setIcon(icon2)
-        self.toolButton_3.clicked.connect(self.topArrow)
+        self.toolButton_3.pressed.connect(self.topArrowPressed)
+        self.toolButton_3.released.connect(self.topArrowReleased)
         self.toolButton_3.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_3.setObjectName("toolButton_3")
         self.toolButton_4 = QtWidgets.QToolButton(self.groupBox_3)
@@ -257,7 +264,8 @@ class Ui_MainWindow(object):
         icon3.addPixmap(QtGui.QPixmap("bottom arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon3.addPixmap(QtGui.QPixmap("disabled arrow bottom.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.toolButton_4.setIcon(icon3)
-        self.toolButton_4.clicked.connect(self.downArrow)
+        self.toolButton_4.pressed.connect(self.downArrowPressed)
+        self.toolButton_4.released.connect(self.downArrowReleased)
         self.toolButton_4.setIconSize(QtCore.QSize(64, 64))
         self.toolButton_4.setObjectName("toolButton_4")
         self.groupBox_4 = QtWidgets.QGroupBox(self.centralwidget)
@@ -528,7 +536,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Power (mW)"))
         self.label_2.setText(_translate("MainWindow", "Voltage (V)"))
         self.label_4.setText(_translate("MainWindow", "Temperature ("+u"\u00b0"+"C)"))
-        self.label_5.setText(_translate("MainWindow", "Light Intensity"))
+        self.label_5.setText(_translate("MainWindow", "Light Intensity (%)"))
         self.label_6.setText(_translate("MainWindow", "Humidity (%)"))
 
     def update_plots(self):
@@ -615,17 +623,53 @@ class Ui_MainWindow(object):
         self.toolButton_4.setEnabled(True)
         global stop_threads 
         stop_threads=True
-    def topArrow(self):
-        print("["+str(datetime.datetime.now())+"] "+ "tilt up")  
+    def topArrowPressed(self):
+        global topArrowRotate
+        topArrowRotate = True
+        print("["+str(datetime.datetime.now())+"] "+ "Tilt up: "+str(topArrowRotate)) 
+        
 
-    def downArrow(self):
-        print("["+str(datetime.datetime.now())+"] "+ "tilt down")
-
-    def rightArrow(self):
-        print("["+str(datetime.datetime.now())+"] "+ "rotate ccw")
+    def downArrowPressed(self):
+        global downArrowRotate
+        downArrowRotate = True 
+        print("["+str(datetime.datetime.now())+"] "+ "Tilt down: "+str(downArrowRotate))
+        
+    def rightArrowPressed(self):
+        global rightArrowRotate
+        rightArrowRotate = True 
+        print("["+str(datetime.datetime.now())+"] "+ "Rotate ccw: "+str(rightArrowRotate))
+        
     
-    def leftArrow(self):
-        print("["+str(datetime.datetime.now())+"] "+ "rotate cw")
+    def leftArrowPressed(self):
+        global leftArrowRotate
+        leftArrowRotate = True 
+        print("["+str(datetime.datetime.now())+"] "+ "Rotate cw: "+str(leftArrowRotate))
+        
+
+    def topArrowReleased(self):
+        global topArrowRotate
+        topArrowRotate = False 
+        print("["+str(datetime.datetime.now())+"] "+ "Tilt up: "+str(topArrowRotate)) 
+          
+
+    def downArrowReleased(self):
+        global downArrowRotate
+        downArrowRotate = False
+        print("["+str(datetime.datetime.now())+"] "+ "Tilt down: "+str(downArrowRotate))
+         
+
+    def rightArrowReleased(self):
+        global rightArrowRotate
+        rightArrowRotate = False 
+        print("["+str(datetime.datetime.now())+"] "+ "Rotate ccw: "+str(rightArrowRotate))
+        
+    
+    def leftArrowReleased(self):
+        global leftArrowRotate
+        leftArrowRotate = False 
+        print("["+str(datetime.datetime.now())+"] "+ "Rotate cw: "+str(leftArrowRotate))
+        
+
     def openLogin(self):
         self.window =QtWidgets.QMainWindow()
         self.ui = Ui_LoginWindow()
@@ -644,7 +688,7 @@ def run(self):
                 while (stop_threads):
                         time.sleep(1)
                 time.sleep(1)
-                print("["+str(datetime.datetime.now())+"] "+ "thread running")
+                print("["+str(datetime.datetime.now())+"] "+ "Thread running")
                 
 
 
