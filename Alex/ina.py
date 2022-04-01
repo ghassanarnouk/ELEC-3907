@@ -27,7 +27,7 @@ try:
         dict['Power'].append(p)
         df = pd.DataFrame(data = dict)
         df.to_csv('solar.csv', index = False)
-        sleep(30)
+        sleep(1)
 
 except KeyboardInterrupt:
     print("\n exiting")
