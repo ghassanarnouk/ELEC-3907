@@ -45,7 +45,7 @@ MinPW_EW = 0.001
 MaxPW_EW = 0.0025
 # Create servo object using corrected pulse width
 # Uses GPIO4 (pin 7 on Pi)
-servo_EW = Servo("GPIO4", min_pulse_width = MinPW_EW , max_pulse_width = MaxPW_EW)
+servo_EW = Servo("GPIO17", min_pulse_width = MinPW_EW , max_pulse_width = MaxPW_EW)
 servo_EW.value = None
 
 # Setup manual adjust button interrupts and manual adjust LED
