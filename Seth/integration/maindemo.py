@@ -41,6 +41,7 @@ from time import sleep
 from datetime import datetime
 from ina219 import INA219
 import pandas as pd
+from pathlib import Path
 
 #Marissa imports
 from gpiozero import MCP3008 # Using MCP3008 ADC
@@ -49,13 +50,21 @@ from gpiozero import Button, LED
 from time import sleep #provides time for servo to adjust
 from signal import pause
 
+#temp/humid imports
+import adafruit_dht
+import board
 
+dht = adafruit_dht.DHT22(board.D5)
 stop_threads = True
 topArrowRotate = False
 downArrowRotate = False
 rightArrowRotate = False
 leftArrowRotate = False
-
+dic = {'Time': [],
+        'Voltage':[],
+        'Current':[],
+        'Power':[],
+        }
 #Marrisa code
  # Setup
 
@@ -504,7 +513,7 @@ class Ui_MainWindow(object):
         self.progress5.setOutlinePenWidth(3)
         self.progress5.setDataPenWidth(3)
         self.progress5.setNullPosition(QRoundProgressBar.PositionBottom)
-        self.progress5.setRange(-40,40)
+        self.progress5.setRange(0,2)
         self.progress5.setValue(0)
          # style accordingly via palette
         palette5 = QPalette()
@@ -570,6 +579,12 @@ class Ui_MainWindow(object):
         self.timer.start()
         self.openLogin()
 
+        self.timer1 = QTimer()
+        self.timer1.setInterval(6000)
+        self.timer1.timeout.connect(self.updatecsv)
+        self.timer1.start()
+        self.openLogin()
+
         
 
 
@@ -630,9 +645,26 @@ class Ui_MainWindow(object):
         self.progress.setValue(self.p)
         self.progress2.setValue(self.i)
         self.progress3.setValue(self.v)
-        self.progress4.setValue(24)
-        self.progress5.setValue((random.uniform(-20,20)))
-        self.progress6.setValue(43)
+        try:
+            temperature = dht.temperature
+            humidity = dht.humidity
+        except:
+            print("temp/humid failed")
+            try:
+                temperature = dht.temperature
+                humidity = dht.humidity
+            except:
+                temperature = dht.temperature
+                humidity = dht.humidity
+                print("temp/humid failed")
+        self.progress4.setValue(temperature)
+        global LDR_NE
+        global LDR_SE
+        global LDR_SW
+        global LDR_NW
+        average_LDR =(LDR_NE.voltage+LDR_SE.voltage+LDR_SW.voltage+LDR_NW.voltage)/4
+        self.progress5.setValue(average_LDR)
+        self.progress6.setValue(humidity)
         
         if(self.n_data<20):
                 self.n_data+=1
@@ -667,41 +699,39 @@ class Ui_MainWindow(object):
         self.canvas3.draw()
 
     
-    def timers(self):
-        self.timer = QTimer()
-        self.timer.setInterval(5000)
-        self.timer.timeout.connect(self.updateBar)
-        self.timer.start()
 
-    def update_plot(self):
-        pass
-       
-    
-    def update_plot2(self):
-      
-        if(self.n_data<20):
-               pass #would increment
-        else:
-                self.ydata = self.ydata[1:] + [random.randint(8, 12)]
-        self.canvas2.axes.cla()  # Clear the canvas.
-        self.canvas2.axes.plot(self.xdata, self.ydata, '#42f5e3')
-        self.canvas2.axes.set_title("Current Plot")
-        self.canvas2.axes.title.set_color('white')
-        # Trigger the canvas to update and redraw.
-        self.canvas2.draw()
-    
-    def update_plot3(self):
-       
-        if(self.n_data<20):
-                pass#would increment
-        else:
-                self.ydata = self.ydata[1:] + [random.randint(8, 12)]
-        self.canvas3.axes.cla()  # Clear the canvas.
-        self.canvas3.axes.plot(self.xdata, self.ydata, '#7e42f5')
-        self.canvas3.axes.set_title("Voltage Plot")
-        self.canvas3.axes.title.set_color('white')
-        # Trigger the canvas to update and redraw.
-        self.canvas3.draw()
+    def updatecsv(self):
+        ina = INA219(shunt_ohms = 0.1, max_expected_amps = 0.6, address = 0x40, busnum = 1)
+
+        ina.configure(voltage_range = ina.RANGE_16V, gain = ina.GAIN_AUTO, bus_adc = ina.ADC_128SAMP, shunt_adc = ina.ADC_128SAMP)
+        # dict = {'Time': [],
+        # 'Voltage':[],
+        # 'Current':[],
+        # 'Power':[],
+        # }
+        global dic
+        print("updatecsv")
+        v = ina.voltage()
+        i = ina.current()
+        p = ina.power()
+        print("\n POWER: %f \n CURRENT: %f \n VOLTAGE: %f" %(p, i, v))
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        current_time = current_time.replace(':', '')
+        current_time = current_time[0:4]
+        dic['Time'].append(current_time)
+        dic['Voltage'].append(v)
+        dic['Current'].append(i)
+        dic['Power'].append(p)
+        current_date = now.strftime("%Y:%m:%d")
+        current_date = current_date.replace(':', '')
+        title = 'solar' + current_date + '.csv'
+        df = pd.DataFrame(data = dic)
+        print(title)
+        if (current_time == '2359'):
+            Path('/home/pi/Documents/ELEC-3907/Alex/' + title).rename('/home/pi/Documents/ELEC-3907/Alex/Database/' + title)
+            print('FILE MOVED')
+        df.to_csv(title, index = False)
 
     def automaticButton(self):
         self.pushButton.setEnabled(False)
@@ -714,7 +744,7 @@ class Ui_MainWindow(object):
         stop_threads=False
         
         
-
+  
     def manualButton(self):
         global stop_threads 
         stop_threads=True
@@ -819,7 +849,7 @@ def run(self):
         global stop_threads
         global LDR_NE
         global LDR_SE
-        global LDR_NW
+        global LDR_SW
         global LDR_NW
         global servo_NS
         global servo_EW
