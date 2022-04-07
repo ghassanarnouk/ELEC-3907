@@ -236,11 +236,34 @@
     % First section goes here
     \section{Current Plot}
     \label{sct:cplot}
-    <++>
+    \begin{figure}[htbp]
+    \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                grid=both,
+                ymin=0,
+                ymax=1,
+%               max space between ticks=1,
+                xmin=0,
+                xmax=2400,
+                xlabel=Time Unit,
+                ylabel=Power (w),]
+                \addplot[color=red, mark=*, mark size=0.4, style=thick]table[x=Time, y=Current, col sep=comma]{solar.csv};
+            \end{axis}
+        \end{tikzpicture}
+    \captionof{figure}{Current Plot}
+    \label{fig:vPlot}
+    \end{figure}
     \clearpage
-    \section{Current Table}
+    \section{Data Table}
     \label{sct:ctable}
-    <++>
+    \begin{table}[htbp]
+        \centering
+        \caption{Data collect using solar panel}
+        \csvautotabular{solar.csv}
+        \label{tab:data}
+    \end{table}
+    
     \clearpage
 
     % Prints glossaries

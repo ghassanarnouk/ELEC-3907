@@ -236,11 +236,34 @@
     % First section goes here
     \section{Power Plot}
     \label{sct:pplot}
-    <++>
+    \begin{figure}[htbp]
+    \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                grid=both,
+                ymin=0,
+                ymax=1,
+%               max space between ticks=1,
+                xmin=0,
+                xmax=2400,
+                xlabel=Time Unit,
+                ylabel=Power (w),]
+                \addplot[color=red, mark=*, mark size=0.4, style=thick]table[x=Time, y=Power, col sep=comma]{solar.csv};
+            \end{axis}
+        \end{tikzpicture}
+    \captionof{figure}{Power Plot}
+    \label{fig:vPlot}
+    \end{figure}
     \clearpage
-    \section{Power Table}
+    \section{Data Table}
     \label{sct:ptable}
-    <++>
+    \begin{table}[htbp]
+        \centering
+        \caption{Data collected using solar panel}
+        \csvautotabular{solar.csv}
+        \label{tab:data}
+    \end{table}
+    
     \clearpage
 
     % Prints glossaries

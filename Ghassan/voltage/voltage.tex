@@ -6,8 +6,7 @@
 % shell: yes - shell escape to add compilation parameters.
 
 % arara: pdflatex: { synctex: on, interaction: nonstopmode, shell: yes }
-% arara: pdflatex: { synctex: on, interaction: nonstopmode, shell: yes }
-
+% arara: pdflatex: { synctex: on, interaction: nonstopmode, shell: yes } 
 
 % article - the document class.
 % hidelinks - removes the borders around clickable cross-references and hyperlinks
@@ -248,17 +247,23 @@
                 xmin=0,
                 xmax=2400,
                 xlabel=Time Unit,
-                ylabel=V,]
-                \addplot[color=black, mark=*, mark size=0.4, style=thick]table[x=Time, y=Voltage, col sep=comma]{solar.csv};
+                ylabel=Voltage (v),]
+                \addplot[color=red, mark=*, mark size=0.4, style=thick]table[x=Time, y=Voltage, col sep=comma]{solar.csv};
             \end{axis}
         \end{tikzpicture}
     \captionof{figure}{Current Plot}
     \label{fig:vPlot}
     \end{figure}
     \clearpage
-    \section{Voltage Table}
+    \section{Data Table}
     \label{sct:vtable}
-    <++>
+    \begin{table}[htbp]
+        \centering
+        \caption{Data collected using solar panel}
+        \csvautotabular{solar.csv}
+        \label{tab:data}
+    \end{table}
+    
     \clearpage
 
     % Prints glossaries
