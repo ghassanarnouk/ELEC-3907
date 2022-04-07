@@ -237,12 +237,28 @@
     % First section goes here
     \section{Voltage Plot}
     \label{sct:vplot}
-    <++>
+    \begin{figure}[htbp]
+    \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                grid=both,
+                ymin=0,
+                ymax=1,
+%               max space between ticks=1,
+                xmin=0,
+                xmax=2400,
+                xlabel=Time Unit,
+                ylabel=V,]
+                \addplot[color=black, mark=*, mark size=0.4, style=thick]table[x=Time, y=Voltage, col sep=comma]{solar.csv};
+            \end{axis}
+        \end{tikzpicture}
+    \captionof{figure}{Current Plot}
+    \label{fig:vPlot}
+    \end{figure}
     \clearpage
     \section{Voltage Table}
     \label{sct:vtable}
     <++>
-    \clearpage
     \clearpage
 
     % Prints glossaries
