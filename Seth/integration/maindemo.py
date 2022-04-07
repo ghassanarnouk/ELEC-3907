@@ -54,6 +54,9 @@ from signal import pause
 import adafruit_dht
 import board
 
+#Ghassan imports
+import os
+
 dht = adafruit_dht.DHT22(board.D5)
 stop_threads = True
 topArrowRotate = False
@@ -391,10 +394,13 @@ class Ui_MainWindow(object):
         self.actionWeather.triggered.connect(self.weather)
         self.actionPower_Plot = QtWidgets.QAction(MainWindow)
         self.actionPower_Plot.setObjectName("actionPower_Plot")
+        self.actionPower_Plot.triggered.connect(self.latexPower)
         self.actionCurrent_Plot = QtWidgets.QAction(MainWindow)
         self.actionCurrent_Plot.setObjectName("actionCurrent_Plot")
+        self.actionCurrent_Plot.triggered.connect(self.latexCurrent)
         self.actionVoltage_Plot = QtWidgets.QAction(MainWindow)
         self.actionVoltage_Plot.setObjectName("actionVoltage_Plot")
+        self.actionVoltage_Plot.triggered.connect(self.latexVoltage)
         self.menuCharts.addAction(self.actionPower_Plot)
         self.menuCharts.addAction(self.actionCurrent_Plot)
         self.menuCharts.addAction(self.actionVoltage_Plot)
@@ -841,6 +847,18 @@ class Ui_MainWindow(object):
     def weather(self):
         print("["+str(datetime.datetime.now())+"] "+ "weather")
         webbrowser.open('https://www.theweathernetwork.com/ca/weather/ontario/ottawa')
+
+    def latexVoltage(self):
+        print("run latexVoltage")
+        os.system("sh /home/pi/Documents/ELEC-3907/Ghassan/voltage/voltage.sh")
+
+    def latexCurrent(self):
+        print("run latexCurrent")
+        os.system("sh /home/pi/Documents/ELEC-3907/Ghassan/current/current.sh")
+
+    def latexPower(self):
+        print("run latexPower")
+        os.system("sh /home/pi/Documents/ELEC-3907/Ghassan/power/power.sh")
 
 # multi threading
 
