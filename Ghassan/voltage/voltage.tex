@@ -207,8 +207,8 @@
     \clearpage
 
     % Prints list of tables, update and maintain it automatically
-    \listoftables
-    \clearpage
+%    \listoftables
+%    \clearpage
     
     % Prints list of figures, update and maintain it automatically
     \listoffigures
@@ -242,12 +242,12 @@
             \begin{axis}[
                 grid=both,
                 ymin=0,
-                ymax=1,
+                ymax=3,
 %               max space between ticks=1,
                 xmin=0,
                 xmax=2400,
                 xlabel=Time Unit,
-                ylabel=Voltage (v),]
+                ylabel=Voltage (mV),]
                 \addplot[color=red, mark=*, mark size=0.4, style=thick]table[x=Time, y=Voltage, col sep=comma]{solar.csv};
             \end{axis}
         \end{tikzpicture}
@@ -255,14 +255,14 @@
     \label{fig:vPlot}
     \end{figure}
     \clearpage
-    \section{Data Table}
-    \label{sct:vtable}
-    \begin{table}[htbp]
-        \centering
-        \caption{Data collected using solar panel}
-        \csvautotabular{solar.csv}
-        \label{tab:data}
-    \end{table}
+%    \section{Data Table}
+%    \label{sct:vtable}
+%    \begin{table}[htbp]
+%        \centering
+%        \caption{Data collected using solar panel}
+%        \csvautotabular{solar.csv}
+%        \label{tab:data}
+%    \end{table}
     
     \clearpage
 

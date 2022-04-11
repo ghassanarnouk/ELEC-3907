@@ -519,7 +519,7 @@ class Ui_MainWindow(object):
         self.progress5.setOutlinePenWidth(3)
         self.progress5.setDataPenWidth(3)
         self.progress5.setNullPosition(QRoundProgressBar.PositionBottom)
-        self.progress5.setRange(0,2)
+        self.progress5.setRange(0,4)
         self.progress5.setValue(0)
          # style accordingly via palette
         palette5 = QPalette()
@@ -570,6 +570,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.canvas2)
         self.verticalLayout.addWidget(self.canvas3)
 
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -615,7 +616,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Voltage (V)"))
         self.label_2.setText(_translate("MainWindow", "Current (mA)"))
         self.label_4.setText(_translate("MainWindow", "Temperature ("+u"\u00b0"+"C)"))
-        self.label_5.setText(_translate("MainWindow", "Light Intensity (%)"))
+        self.label_5.setText(_translate("MainWindow", "Light Intensity"))
         self.label_6.setText(_translate("MainWindow", "Humidity (%)"))
 
     def update_plots(self):
@@ -769,7 +770,7 @@ class Ui_MainWindow(object):
         #print("["+str(datetime.datetime.now())+"] "+ "Tilt up: "+str(topArrowRotate)) 
         global servo_EW
         global servo_NS
-        servo_NS.value = 0.9
+        servo_NS.value = 0.1
         servo_EW.value = None
         
 
@@ -779,7 +780,7 @@ class Ui_MainWindow(object):
         #print("["+str(datetime.datetime.now())+"] "+ "Tilt down: "+str(downArrowRotate))
         global servo_EW
         global servo_NS
-        servo_NS.value = -0.9
+        servo_NS.value = -0.6
         servo_EW.value = None
         
     def rightArrowPressed(self):
@@ -789,7 +790,7 @@ class Ui_MainWindow(object):
         global servo_EW
         global servo_NS
         servo_NS.value = None
-        servo_EW.value = 0.9
+        servo_EW.value = 0.1
         
     
     def leftArrowPressed(self):
@@ -799,7 +800,7 @@ class Ui_MainWindow(object):
         global servo_EW
         global servo_NS
         servo_NS.value = None
-        servo_EW.value = -0.9
+        servo_EW.value = -0.6
         
 
     def topArrowReleased(self):
@@ -845,7 +846,7 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window,MainWindow)
         self.window.show()
     def weather(self):
-        print("["+str(datetime.datetime.now())+"] "+ "weather")
+        #print("["+str(datetime.datetime.now())+"] "+ "weather")
         webbrowser.open('https://www.theweathernetwork.com/ca/weather/ontario/ottawa')
 
     def latexVoltage(self):
@@ -895,10 +896,10 @@ def run(self):
             #Adjust North South Servo   
            
             if ((LDR_North - LDR_South) > LDR_Diff):
-                servo_NS.value = -0.9
+                servo_NS.value = -0.6
            
             elif ((LDR_North - LDR_South) < (-1 * LDR_Diff)):
-                servo_NS.value = 0.9
+                servo_NS.value = 0.1
        
             else:
                 servo_NS.value = None
@@ -906,10 +907,10 @@ def run(self):
             #Adjust East West Servo   
            
             if ((LDR_East - LDR_West) > LDR_Diff):
-                servo_EW.value = -0.9
+                servo_EW.value = -0.6
            
             elif ((LDR_East - LDR_West) < (-1 * LDR_Diff)):
-                servo_EW.value = 0.9
+                servo_EW.value = 0.1
        
             else:
                 servo_EW.value = None
